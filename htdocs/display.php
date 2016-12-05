@@ -22,7 +22,7 @@
 }
 body
 {
-    
+    background-color: transparent;
     font-size:14;
     font-weight:bold;
 }
@@ -32,25 +32,23 @@ body
 
 <br>
 <div class="container home">
-<font face="comic sans ms">
-<h3><center> List of Files the can be download </center> </h3>
-</font>
 
  <table class="table table-bordered">
   <thead>
-   <tr>
-    <th><font face="comic sans ms">Subject</font></th>
-    <th><font face="comic sans ms">Topic </font></th>
-	<th><font face="comic sans ms">Download Files </font></th>
+   <tr style="background-color: #ffffff;">
+    <th>Title</th>
+    <th>Description</th>
+		<th>Download Files</th>
   </tr>
    </thead>
     <tbody>
-                        <?php
+ 
+ <?php
 
-	$link=mysql_connect("localhost","root","root");
+	$link=mysql_connect("localhost","root","");
 	mysql_select_db("test2",$link);
 	$q="select count(*) \"total\"  from presentation";
-	$ros=mysql_query($q,$link);
+	$ros=mysql_query($q, $link);
 	$row=(mysql_fetch_array($ros));
 	$total=$row['total'];
 	$dis=3;
@@ -73,63 +71,43 @@ body
 	echo '</table>';
 	echo  '</tbody>';
 	echo '<br/>';
+	
 	if($page_cur>1)
 	{
-	 echo '<a href="display.php?page='.($page_cur-1).'" style="cursor:pointer;color:DeepSkyBlue ;" ><input style="cursor:pointer;background-color:DeepSkyBlue;border:1px black solid;border-radius:5px;width:120px;height:30px;color:white;font-size:15px;font-weight:bold;" type="button" value=" Previous "></a> ';
+	 echo '<a href="display.php?page='.($page_cur-1).'"><input type="button" value=" Previous "></a> ';
      }
 	else
 	{
-	  
-	  echo '<input style="background-color:DeepSkyBlue;border:1px black solid;border-radius:5px;width:120px;height:30px;color:black;font-size:15px;font-weight:bold;" type="button" value=" Previous "> ';
-	  
+	  echo '<input type="button" value=" Previous ">';
 	}
 	for($i=1;$i<$total_page;$i++)
 	{
 		if($page_cur==$i)
 		{
 		    
-			echo '<input style="background-color:DeepSkyBlue ;border:2px black solid;border-radius:5px;width:30px;height:30px;color:black;font-size:15px;font-weight:bold;" type="button" value="'.$i.'"> ';
+			echo '<input type="button" value="'.$i.'"> ';
 	
 		}
 		else
 		{
-		echo '<a href="display.php?page='.$i.'"> <input style="cursor:pointer;background-color:DeepSkyBlue ;border:1px black solid;border-radius:5px;width:30px;height:30px;color:white;font-size:15px;font-weight:bold;" type="button" value="'.$i.'"> </a> ';
+		echo '<a href="display.php?page='.$i.'"> <input type="button" value="'.$i.'"> </a> ';
 		
 		}
 	}
 	if($page_cur<$total_page)
 	{
 		
-		echo '<a href="display.php?page='.($page_cur+1).'"><input style="cursor:pointer;background-color:DeepSkyBlue ;border:1px black solid;border-radius:5px;width:90px;height:30px;color:white;font-size:15px;font-weight:bold;" type="button" value=" Next "></a>';
+		echo '<a href="display.php?page='.($page_cur+1).'"><input type="button" value=" Next "></a>';
   	  
 	}
 	else
 	{
 
-	 echo '<input style="background-color:DeepSkyBlue ;border:1px black solid;border-radius:5px;width:90px;height:30px;color:black;font-size:15px;font-weight:bold;" type="button" value="   Next "> ';
+	 echo '<input type="button" value=" Next "> ';
      }
    
 ?>
 
 </div>
 </body>
-</html>								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-								
-                        
-						
-  
-
+</html>

@@ -1,3 +1,8 @@
+body {
+    background-image: url("http://i63.tinypic.com/2ueo2de.png");
+    background-color: #ffffff;
+}
+
 input[type=text]{
     width: 135px;
     box-sizing: border-box;
@@ -26,7 +31,7 @@ ul.tab{
     float: left;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 1px solid #f1f1f1;
     background-color: #f1f1f1;
     overflow: auto;
     top: 0px;
@@ -38,6 +43,7 @@ ul.tab li a{
     display: block;
     color: black;
     text-align: center;
+    border-bottom: 2px solid #ffffff;
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
@@ -58,12 +64,12 @@ ul.tab li a:focus, .active{
 }
 
 button.login{
-    padding: 4px 4px 4px 4px;
+    padding: 5px 10px 5px 10px;
     font-size: 14px;
     position: absolute;
     top: 0px;
     right: 0px;
-    margin: 5px 5px 0px 0px;
+    margin: 10px 10px 0px 0px;
     
 }
 
@@ -85,7 +91,7 @@ button.login{
     position: relative;
     background-color: #fefefe;
     margin: auto;
-    padding: 16px 16px 24px 16px;
+    padding: 16px 16px 16px 16px;
     border: 1px solid #888;
     width: 200px;
     text-align: center;

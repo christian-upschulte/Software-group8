@@ -21,7 +21,7 @@
 }
 body
 {
-    
+    background-color: transparent;
     font-size:12;
     font-weight:bold;
 }
@@ -29,9 +29,8 @@ body
 
 		</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Upload File</title>
     
-        <?php
+    <?php
 			if(!empty($_POST))
 			{
 				$con = mysql_connect("localhost","root","");
@@ -63,17 +62,16 @@ body
      <body>
 	   <div class="container home">
       <br>
-		<h3><center> UPLOAD FILE PAGE </center> </h3> </font>
 
         <form id="form3" enctype="multipart/form-data" method="post" action="upload.php">
              <table class="table table-bordered">         	
                 <tr>
-                    <td>	<label for="sub">Subject: </label>	</td>
+                    <td>	<label for="sub">Title: </label>	</td>
                     <td>	<input type="text" name="sub" id="sub" class="input-medium"  
 					         required autofocus placeholder="Title of the subject"/>	</td>
                 </tr>
                 <tr>
-                    <td valign="top" align="left">Presentation:</td>
+                    <td valign="top" align="left">Description:</td>
                     <td valign="top" align="left"><input type="text" name="pre" cols="50" rows="10" id="pre"  
 					placeholder="Type of Presentation"
 					class="input-medium" required></textarea></td>
@@ -86,7 +84,7 @@ body
                 <tr>
                   
 				   <td colspan="2" align="center">		    
-				   <input type="submit" class="btn btn-primary" name="upload" id="upload" 
+				   <input type="submit" class="btn btn-success" name="upload" id="upload" 
 				   title="Click here to upload the file." value="Upload File" /> </td>
                 </tr>
             </table>
