@@ -30,17 +30,11 @@ CREATE TABLE IF NOT EXISTS `presentation` (
   `subject` varchar(100) NOT NULL,
   `topic` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL,
+  `size` int NOT NULL,
+  `uploaddate` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `presentation`
 --
-
-INSERT INTO `presentation` (`id`, `subject`, `topic`, `file`) VALUES
-(26, 'SQL Tutorial', 'SQL PDF', 'sql_tutorial.pdf'),
-(30, 'prog1', 'PDF Format', 'python_tutorial.pdf'),
-(31, 'prog2', 'PDF Format', 'servlets_tutorial.pdf'),
-(32, 'prog4', 'PDF Format', 'jsp_tutorial.pdf'),
-(33, 'prog5', 'PDF Format', 'ruby_tutorial.pdf'),
-(34, 'prog6', 'PDF Format', 'struts2_tutorial.pdf');

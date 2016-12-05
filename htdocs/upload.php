@@ -21,17 +21,21 @@
 }
 body
 {
-    
-    font-size:12;
+    background-color: transparent;
+    font-size:14;
     font-weight:bold;
+}
+label
+{
+	font-size: 16;
+	font-weight:bold;
 }
 
 
 		</style>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Upload File</title>
     
-        <?php
+    <?php
 			if(!empty($_POST))
 			{
 				$con = mysql_connect("localhost","root","");
@@ -41,19 +45,29 @@ body
 				{
 					if (file_exists("download/" . $_FILES["file"]["name"]))
 					{
-						echo '<script language="javascript">alert(" Sorry!! Filename Already Exists...")</script>';
+						echo '<script language="javascript">alert("Error! Filename already exists. Please try again.")</script>';
+					}
+					else if (((int)$_FILES["file"]["size"]) > 1048576)
+					{
+						echo '<script language="javascript">alert("Error! File size is too big! Please try again.")</script>';
+					}
+					else if (pathinfo("download/".$_FILES["file"]["name"], PATHINFO_EXTENSION) !== 'txt')
+					{
+						echo '<script language="javascript">alert("Error! File is not a .txt file! Please try again.")</script>';
 					}
 					else
 					{
 						move_uploaded_file($_FILES["file"]["tmp_name"],
 						"download/" . $_FILES["file"]["name"]) ;
 						mysql_select_db("test2", $con);
-						$sql = "INSERT INTO presentation(subject,topic,file) VALUES ('" . $_POST["sub"] ."','" . $_POST["pre"] . "','" . 
-							  $_FILES["file"]["name"] ."');";
+						$size = (int)$_FILES["file"]["size"];
+						$date = date('Y-m-d');
+						$sql = "INSERT INTO presentation(subject,topic,file,size,uploaddate) VALUES ('" . $_POST["sub"] ."','" . $_POST["pre"] . "','" . 
+							  $_FILES["file"]["name"] ."', '$size', '$date');";
 						if (!mysql_query($sql,$con))
 							echo('Error : ' . mysql_error());
 						else
-							echo '<script language="javascript">alert("Thank You!! File Uploded")</script>';
+							echo '<script language="javascript">alert("Success! Your file has been successfully uploaded!")</script>';
 						}
 				}
 				mysql_close($con);
@@ -63,19 +77,18 @@ body
      <body>
 	   <div class="container home">
       <br>
-		<h3><center> UPLOAD FILE PAGE </center> </h3> </font>
 
         <form id="form3" enctype="multipart/form-data" method="post" action="upload.php">
              <table class="table table-bordered">         	
                 <tr>
-                    <td>	<label for="sub">Subject: </label>	</td>
-                    <td>	<input type="text" name="sub" id="sub" class="input-medium"  
-					         required autofocus placeholder="Title of the subject"/>	</td>
+                    <td><label for="sub">Title:</label></td>
+                    <td><input type="text" name="sub" id="sub" class="input-medium"  
+					         required autofocus placeholder="Title of the file"/>	</td>
                 </tr>
                 <tr>
-                    <td valign="top" align="left">Presentation:</td>
+                    <td style="font-size: 16px; font-weight: bold;">Description:</td>
                     <td valign="top" align="left"><input type="text" name="pre" cols="50" rows="10" id="pre"  
-					placeholder="Type of Presentation"
+					placeholder="Description of the file"
 					class="input-medium" required></textarea></td>
                 </tr>
                 <tr>
@@ -83,13 +96,9 @@ body
                     <td><input type="file" name="file" id="file" 
                         title="Click here to select file to upload." required /></td>
                 </tr>
-                <tr>
-                  
-				   <td colspan="2" align="center">		    
-				   <input type="submit" class="btn btn-primary" name="upload" id="upload" 
-				   title="Click here to upload the file." value="Upload File" /> </td>
-                </tr>
             </table>
+            <input type="submit" class="btn btn-success" name="upload" id="upload" 
+				   title="Click here to upload the file." value="Upload File" />
         </form>
 		</div>
     </body>

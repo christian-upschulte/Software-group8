@@ -1,13 +1,13 @@
 <html>
 	<head>
 		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="interface.css">
 
@@ -15,79 +15,93 @@
 	</head>
 
 	<body>
-		 <ul class="tab">
-		<li><h1 style="text-align: center;">FiSH</h1></li>
-		<li><a href="javascript:void(o)" class="tablinks" onclick="tableDisplay(event,'Files')">Files</a></li>
-		<li><a href="javascript:void(o)" class="tablinks" onclick="tableDisplay(event,'Forums')">Forums</a></li>
-	</ul>
-	<div style="float: left;">
-	<div id="Files" class="tabcontent">
-		<form action="php file location">
-			<input type="text" name="searchFiles" placeholder="Search Files..">
-			<input type="submit" value="Search">
-		</form>    
-		<h3>Files</h3>
-		<p>this is where you will use php to display the files on our database.</p>
-	</div>
-   
-	<div id="Forums" class="tabcontent">
-		<form action="php file location">
-			<input type="text" name="searchForums" placeholder="Search Forums..">
-			<input type="submit" value="Search">   
-		</form>
-		<h3>Forums</h3>
-		<p>this is where you will use php to display the forums on our database.</p>
-	</div>
-		<button id="login" class="login">Login</button>
-	</div>
-	
-	<div id="modalMain" class="modal">
-		<div class="modalLogin">
-			<form action="php file location">
-				<p>username</p>
-				<input type="username" name="username">
-				<p>password</p>
-				<input type="password" name="password">        
-				<input type="submit" value="submit">
-			</form>
-		</div>
-	</div>
+		<ul class="tab">
+			<img src="http://i63.tinypic.com/bg4cax.png" width="25%" style="display:block; margin-left: auto; margin-right: auto; padding-top: 10px;">
+			<li><a href="home.html" style="text-align: center; font-size: 40px;">FiSH</a></li>
+			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Download')">Download Files</a></li>
+			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Upload')">Upload Files</a></li>
+			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Chat')">Chat</a></li>
+		</ul>
 
-	 <script>
-		function tableDisplay(evt, tableName){
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i< tabcontent.length; i++){
-				tabcontent[i].style.display = "none";
+		<div style="float: left;">		
+
+		<div id="Download" class="tabcontent">   
+			<h2>Download Files</h2>
+			<br>
+			<form action="php file location">
+				<input type="text" name="searchFiles" placeholder="Search Files..">
+				<input type="submit" value="Search">
+			</form>
+			<object data="./htdocs/display.php" style="position: absolute; width: 75%; height: 100%;">
+			    <embed src="./htdocs/display.php" width="100%" height="100%"> </embed>
+			    Error: Could not display files.
+			</object>
+		</div>
+
+		<div id="Upload" class="tabcontent">   
+			<h2>Upload Files</h2>
+			<p> *Files must be .txt files and less than 1 MB
+			<object data="./htdocs/upload.php" style="position: absolute; width: 75%; height: 100%;">
+			    <embed src="./htdocs/upload.php" width="100%" height="100%"> </embed>
+			    Error: Could not display upload form.
+			</object>
+		</div>		
+	   
+		<div id="Chat" class="tabcontent">
+			<h2>Chat</h2>
+			<object data="./chat/index.php" style="position: absolute; width: 75%; height: 100%;">
+			    <embed src="./chat/index.php" width="100%" height="100%"> </embed>
+			    Error: Could not display chat room.
+		</div>
+			<button id="login" class="login">Login</button>
+		
+		<div id="modalMain" class="modal">
+			<div class="modalLogin">
+				<form action="php file location">
+					<p>username</p>
+					<input type="username" name="username">
+					<p>password</p>
+					<input type="password" name="password">        
+					<input type="submit" value="submit">
+				</form>
+			</div>
+		</div>
+
+		<script>
+			function tableDisplay(evt, tableName){
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i< tabcontent.length; i++){
+					tabcontent[i].style.display = "none";
+				}
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i=0; i < tablinks.length; i++){
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+				document.getElementById(tableName).style.display = "block";
+				evt.currentTarget.className += " active";
 			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i=0; i < tablinks.length; i++){
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			
+			var modal = document.getElementById('modalMain');
+			
+			var btn = document.getElementById('login');
+			
+			var btn2 = document.getElementById('login2');
+			
+			btn.onclick = function() {
+				modal.style.display = "block";
 			}
-			document.getElementById(tableName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-		
-		var modal = document.getElementById('modalMain');
-		
-		var btn = document.getElementById('login');
-		
-		var btn2 = document.getElementById('login2');
-		
-		btn.onclick = function() {
-			modal.style.display = "block";
-		}
-		
-		btn.onclick = function() {
-			modal.style.display = "block";
-		}
-		
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
+			
+			btn.onclick = function() {
+				modal.style.display = "block";
 			}
-		}
-	</script>
+			
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+		</script>
 
 	</body>
 </html>
