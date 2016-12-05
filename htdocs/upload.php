@@ -22,7 +22,11 @@
 body
 {
     background-color: transparent;
+<<<<<<< HEAD
     font-size:14;
+=======
+    font-size:12;
+>>>>>>> origin/master
     font-weight:bold;
 }
 label
@@ -81,12 +85,21 @@ label
         <form id="form3" enctype="multipart/form-data" method="post" action="upload.php">
              <table class="table table-bordered">         	
                 <tr>
+<<<<<<< HEAD
                     <td><label for="sub">Title:</label></td>
                     <td><input type="text" name="sub" id="sub" class="input-medium"  
 					         required autofocus placeholder="Title of the file"/>	</td>
                 </tr>
                 <tr>
                     <td style="font-size: 16px; font-weight: bold;">Description:</td>
+=======
+                    <td>	<label for="sub">Title: </label>	</td>
+                    <td>	<input type="text" name="sub" id="sub" class="input-medium"  
+					         required autofocus placeholder="Title of the subject"/>	</td>
+                </tr>
+                <tr>
+                    <td valign="top" align="left">Description:</td>
+>>>>>>> origin/master
                     <td valign="top" align="left"><input type="text" name="pre" cols="50" rows="10" id="pre"  
 					placeholder="Description of the file"
 					class="input-medium" required></textarea></td>
@@ -96,6 +109,15 @@ label
                     <td><input type="file" name="file" id="file" 
                         title="Click here to select file to upload." required /></td>
                 </tr>
+<<<<<<< HEAD
+=======
+                <tr>
+                  
+				   <td colspan="2" align="center">		    
+				   <input type="submit" class="btn btn-success" name="upload" id="upload" 
+				   title="Click here to upload the file." value="Upload File" /> </td>
+                </tr>
+>>>>>>> origin/master
             </table>
             <input type="submit" class="btn btn-success" name="upload" id="upload" 
 				   title="Click here to upload the file." value="Upload File" />

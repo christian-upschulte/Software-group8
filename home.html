@@ -20,7 +20,11 @@
 			<li><a href="home.html" style="text-align: center; font-size: 40px;">FiSH</a></li>
 			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Download')">Download Files</a></li>
 			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Upload')">Upload Files</a></li>
+<<<<<<< HEAD
 			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Chat')">Chat</a></li>
+=======
+			<li><a href="#" class="tablinks" onclick="tableDisplay(event,'Forums')">Forums</a></li>
+>>>>>>> origin/master
 		</ul>
 
 		<div style="float: left;">		
@@ -28,6 +32,7 @@
 		<div id="Download" class="tabcontent">   
 			<h2>Download Files</h2>
 			<br>
+<<<<<<< HEAD
 			<form action="php file location">
 				<input type="text" name="searchFiles" placeholder="Search Files..">
 				<input type="submit" value="Search">
@@ -67,6 +72,49 @@
 			</div>
 		</div>
 
+=======
+			<form action="php file location">
+				<input type="text" name="searchFiles" placeholder="Search Files..">
+				<input type="submit" value="Search">
+			</form>
+			<object data="./htdocs/display.php" style="position: absolute; width: 75%; height: 100%;">
+			    <embed src="./htdocs/display.php" width="100%" height="100%"> </embed>
+			    Error: Could not display files.
+			</object>
+		</div>
+
+		<div id="Upload" class="tabcontent">   
+			<h2>Upload Files</h2>
+			<br>
+			<object data="./htdocs/upload.php" style="position: absolute; width: 75%; height: 100%;">
+			    <embed src="./htdocs/upload.php" width="100%" height="100%"> </embed>
+			    Error: Could not display upload form.
+			</object>
+		</div>		
+	   
+		<div id="Forums" class="tabcontent">
+			<form action="php file location">
+				<input type="text" name="searchForums" placeholder="Search Forums..">
+				<input type="submit" value="Search">   
+			</form>
+			<h2>Forums</h2>
+			<p>this is where you will use php to display the forums on our database.</p>
+		</div>
+			<button id="login" class="login">Login</button>
+		
+		<div id="modalMain" class="modal">
+			<div class="modalLogin">
+				<form action="php file location">
+					<p>username</p>
+					<input type="username" name="username">
+					<p>password</p>
+					<input type="password" name="password">        
+					<input type="submit" value="submit">
+				</form>
+			</div>
+		</div>
+
+>>>>>>> origin/master
 		<script>
 			function tableDisplay(evt, tableName){
 				var i, tabcontent, tablinks;

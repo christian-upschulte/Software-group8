@@ -38,8 +38,11 @@ body
    <tr style="background-color: #ffffff;">
     <th>Title</th>
     <th>Description</th>
+<<<<<<< HEAD
     <th>Size (bytes)</th>
     <th>Upload Date</th>
+=======
+>>>>>>> origin/master
 		<th>Download Files</th>
   </tr>
    </thead>
